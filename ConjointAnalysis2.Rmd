@@ -21,9 +21,9 @@ title 'Consent Study';
 
 Here are the results:
 
-![](https://github.com/mbrow20/markbrow.github.io/tree/master/RSommers2_FactorsWithLevels.JPG)
+![](https://github.com/mbrow20/markbrow.github.io/tree/master/RSommers2_FactorsWithLevels.jpg)
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/RSommers2_Runs.JPG)
+
 
 
 From the output above, the minimum number of runs for a balanced, orthogonal design (i.e., an "efficient" design) is 16 runs. Each "run" is a survey item that consists of a combination of the factor levels for all the factors.
