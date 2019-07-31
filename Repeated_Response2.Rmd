@@ -10,14 +10,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Question on Repeated Measures T-Test
 
-To address your question, let's take the first results from the Excel spreadsheet. Here you compare the levels within **order** when **proc = 1** (that is, subsetting dataset on **proc = 1**). The results you obtain are the following:
+To address your question, let's take the first results from the Excel spreadsheet. Here you compare the levels within **order** when **proc = 1** (that is, subsetting dataset on **proc = 1**). The results you obtain are the following.
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/EHuppert_ExcelOrderContrast.jpg)
+<img src="EHuppert_ExcelOrderContrast.JPG" style="width:50%; margin-right: 20px" align="center">
+
+
 
 This **t-value** is based on a One-Way ANOVA. You can check this by running a one-way ANOVA in
 SPSS. Here are the results:
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/EHuppert_HypocrisyOrderANOVA.jpg)
+<img src="EHuppert_HypocrisyOrderANOVA.JPG" style="width:80%; margin-right: 20px" align="center">
+
 
 
 
@@ -40,7 +43,9 @@ MIXED score BY order
 
 Here are the results:
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/EHuppert_HypocrisyProcOneMixed.jpg)
+<img src="EHuppert_HypocrisyProcOneMixed.JPG" style="width:80%; margin-right: 20px" align="center">
+
+
 
 where **sqrt(6.019) = 2.453** and the ***df*** **=** **290**. This model accounts for the dependency of the observations. The same results can be reproduced with the **nlme** in R:
 
@@ -70,7 +75,9 @@ MIXED score BY order time
 
 Here is the result from the contrast test:
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/EHuppert_HypocrisyProcOneContrast.jpg)
+<img src="EHuppert_HypocrisyProcOneContrast.JPG" style="width:80%; margin-right: 20px" align="center">
+
+
 
 This same result, **t(290) = 2.453, p = .015**, is obtained with the **F-test** from the **mixed** command above, as well as the result from the **nlme** package. Notice that the **contrast** test in SPSS explicitly provides a **t-value** along with corresponding ***df***.
 
