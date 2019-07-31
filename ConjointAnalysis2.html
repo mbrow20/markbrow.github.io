@@ -412,10 +412,10 @@ proc print data=sasuser.consent2; run;</code></pre>
 </div>
 <div id="analyzing-the-data" class="section level2">
 <h2>Analyzing the Data</h2>
-<p>You can have SAS generate the questionnaire or create the questionnaire manually following the balanced and orthogonal specification table above. For analyzing the data, input the 24 responses per subject as rows of input lines:</p>
+<p>You can have SAS generate the questionnaire or create the questionnaire manually following the balanced and orthogonal specification table above. For analyzing the data, input the 24 responses per subject as rows of input lines.</p>
 <p><img src="RSommers_ResponseInput.JPG" style="width:50%; margin-right: 20px" align="center"></p>
-<p>The input from above corresponds to a study with 30 runs. You perform the metric conjoint analysis using the <strong>PROC TRANSREG</strong> function:</p>
-<p><img src="RSommers_ResponseInput.JPG" style="width:45%; margin-right: 20px" align="center"></p>
+<p>The input from above corresponds to a study with 30 runs. You perform the metric conjoint analysis using the <strong>PROC TRANSREG</strong> function.</p>
+<p><img src="RSommers_TRANSREG.JPG" style="width:50%; margin-right: 20px" align="center"></p>
 <p>In the figure above, <strong>factors</strong> are specified as <strong>class</strong> variables. This will give you the main effects and any interactions <strong>that you specify</strong>. Notice the <strong>brand|price</strong> specification. This tells you that you want the main effects of <strong>brand</strong> and <strong>price</strong>, in addition to the interaction <strong>brand X price</strong>. The coefficients for a conjoint analysis are known as <em>part-worth utilities</em>. Not only does it display main effects, but it performs subject level analysis. Any subject with an R^2 value less than 0.3 are flagged for exclusion. The analysis should be based on subjects who are taking the task seriously Here is the syntax for a macro that will drop subjects who do not seem to fit the model:</p>
 <pre class="r"><code>data model;
 set utils;

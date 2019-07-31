@@ -101,15 +101,15 @@ Here is what the balance design would look like:
 
 ## Analyzing the Data
 
-You can have SAS generate the questionnaire or create the questionnaire manually following the balanced and orthogonal specification table above. For analyzing the data, input the 24 responses per subject as rows of input lines:
+You can have SAS generate the questionnaire or create the questionnaire manually following the balanced and orthogonal specification table above. For analyzing the data, input the 24 responses per subject as rows of input lines.
 
 <img src="RSommers_ResponseInput.JPG" style="width:50%; margin-right: 20px" align="center">
 
 
 
-The input from above corresponds to a study with 30 runs. You perform the metric conjoint analysis using the **PROC TRANSREG** function:
+The input from above corresponds to a study with 30 runs. You perform the metric conjoint analysis using the **PROC TRANSREG** function.
 
-<img src="RSommers_ResponseInput.JPG" style="width:45%; margin-right: 20px" align="center">
+<img src="RSommers_TRANSREG.JPG" style="width:50%; margin-right: 20px" align="center">
 
 
 In the figure above, **factors** are specified as **class** variables. This will give you the main effects and any interactions **that you specify**. Notice the **brand|price** specification. This tells you that you want the main effects of **brand** and **price**, in addition to the interaction **brand X price**. The coefficients for a conjoint analysis are known as *part-worth utilities*. Not only does it display main effects, but it performs subject level analysis. Any subject with an R^2 value less than 0.3 are flagged for exclusion. The analysis should be based on subjects who are taking the task seriously Here is the syntax for a macro that will drop subjects who do not seem to fit the model:
