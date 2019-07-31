@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>ConjointAnalysis2.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mark V. Brow</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Repeated_Response2.html">Repeated Measures ANOVA</a>
+    </li>
+    <li>
+      <a href="ThreeWay.html">Three-Way ANOVA</a>
+    </li>
+    <li>
+      <a href="ConjointAnalysis2.html">Conjoint Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="contact.html">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/mbrow20">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/BrowMark">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/drmarkbrow/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<hr />
+<hr />
+<div id="consent-study" class="section level2">
+<h2>Consent Study</h2>
+<p>Here are the steps for running the conjoint analysis with <strong>4</strong> levels of the factor <strong>phrasing</strong>.</p>
+<ol style="list-style-type: decimal">
+<li>Run the <strong>%Mktruns</strong> macro to determine how many runs you need for a balanced and orthogonal design, given the number of factors and factor levels. The following <strong>%Mktruns</strong> syntax will find the number of <em>runs</em> for a balanced and orthogonal design (also called an <em>efficient</em> design) given the first factor has four levels, the second factor 4 levels, and the remaining four factors two levels each (See syntax below):</li>
+</ol>
+<pre class="r"><code>title &#39;Consent Study&#39;;
+%mktruns(4 4 2 2 2 2)</code></pre>
+<p>Here are the results:</p>
+<p><img src="RSommers2_FactorsWithLevels.jpg" /></p>
+<p><img src="RSommers2_Runs.jpg" /></p>
+<p>From the output above, the minimum number of runs for a balanced, orthogonal design (i.e., an “efficient” design) is 16 runs. Each “run” is a survey item that consists of a combination of the factor levels for all the factors.</p>
+<p>With 72 runs, you can get a fully orthogonal and balanced design. This may be prohibitive, however. Notice in the <strong>Violations</strong> column. There are 4 violations for the <em>36-run</em> design. Recall that orthogonal means that there is an equal number of the same pairs in each row (run). Some pair combinations cannot be divided by 8.</p>
+<p>But if the factor <strong>phrasings</strong> is reduced to six levels, these are the results: <img src="RSommers_ConsentLevSix.jpg" /></p>
+<p><img src="RSommers_ConsentRunsSix.jpg" /></p>
+<p>Here you see that an orthogonal and balanced design can be achieved with just 24 runs, without having to mess with violations.</p>
+<p><em>(try to create orthogonal and balanced designs, if possible, to avoid specifying restrictions)</em></p>
+<div id="restrictions-on-less-efficient-design" class="section level4">
+<h4>Restrictions on Less Efficient Design</h4>
+<p>Now once we know the number of runs we want, we have the <strong>%MktEx</strong> macro create the design. The factors <strong>x1 = Condition</strong>, <strong>x2 = Phrasing</strong>, <strong>x3 = GenderPerp</strong>, <strong>x4 = RacePerp</strong>, <strong>x5 = GenderVictim</strong>, <strong>x6 = RaceVictim</strong>, and anyinteractions, e.g., <strong>interact=1*5</strong> specifies an interaction between the first and fifth factor.The <strong>%resmac</strong> macro restricts any unrealistic combinations. With the <strong>%resmac</strong> macro you need to set <strong>badness</strong> command, telling how far off balance and orthogonality you’re willing to go. You can set <strong>bad</strong> to the number of violations in the <strong>runs</strong> macro. But since we do not have to worry about the <strong>badness</strong> command, we can skip this step.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Format the data. Let’s first format the data with the SAS <strong>proc</strong> command:</li>
+</ol>
+<pre class="r"><code>proc format;
+value cd 1=’Control’ 2=’Incapacity’ 3=’Coerce’ 4=&#39;Deception&#39;;
+value ph 1=’Without Consent’ 2=’Permissible’ 3=’Consent’ 4=&#39;Informed Consent&#39;;
+value gprp 1=’Male’ 2=’Female’;
+value rprp 1=’Black’ 2=’White’;
+value gv 1=’Male’ 2=’Female’;
+value rv 1=’Black’ 2=’White’;
+run;</code></pre>
+<p>Check the <strong>Log</strong> to make sure there is no red. If no red, the the file was run correctly.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>We can then set up the design with the <strong>%Mktex</strong> macro. We are going to specify an interaction: the interaction effect of the gender of the perpetrator and the race of the victim. Here is the syntax:</li>
+</ol>
+<pre class="r"><code>%mktex(4 4 2 2 2 2, /* all of the factor levels */
+interact=3*6, /*x3*x6 interaction between gender perpetrator and race of victim */
+n=16, /* 16 runs */
+seed=289) /* random number seed */
+/*restrictions=resmac)  name of restrictions macro */</code></pre>
+<p><img src="RSommers2_Efficiency.jpg" /></p>
+<p>From the Efficiency statistics above, we see that this is a perfectly balanced and orthogonal design.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Now we assign labels with the <strong>%Mktlab</strong> command:</li>
+</ol>
+<pre class="r"><code>%mktlab(data=randomized, vars=Condition Phrasing GenderPerpetrator RacePerpetrator GenderVictim RaceVictim,
+statements=format condition cd. phrasing ph. genderperpetrator gprp.
+raceperpetrator rprp. gendervictim gv. racevictim rv.,
+out=sasuser.consent2)</code></pre>
+<p>Check the <strong>log</strong> briefly to make sure the new dataset, <strong>consent2</strong> in the library <strong>sasuser</strong>, has 16 observations and 6 variables.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>To generate the schematic or <em>blueprint</em> of the survey, use the <strong>%mkteval</strong> function (recall that the dataset is in the <strong>sasuser</strong> library and labeled <strong>consent2</strong>.)</li>
+</ol>
+<pre class="r"><code>%mkteval(data=sasuser.consent2)
+proc print data=sasuser.consent2; run;</code></pre>
+<p>Here is what the balance design would look like:</p>
+<p><img src="RSommers2_Schematic.jpg" /></p>
+</div>
+</div>
+<div id="analyzing-the-data" class="section level2">
+<h2>Analyzing the Data</h2>
+<p>You can have SAS generate the questionnaire or create the questionnaire manually following the balanced and orthogonal specification table above. For analyzing the data, input the 24 responses per subject as rows of input lines:</p>
+<p><img src="RSommers_ResponseInput.jpg" /></p>
+<p>The input from above corresponds to a study with 30 runs. You perform the metric conjoint analysis using the <strong>PROC TRANSREG</strong> function:</p>
+<p><img src="RSommers_TRANSREG.jpg" /></p>
+<p>In the figure above, <strong>factors</strong> are specified as <strong>class</strong> variables. This will give you the main effects and any interactions <strong>that you specify</strong>. Notice the <strong>brand|price</strong> specification. This tells you that you want the main effects of <strong>brand</strong> and <strong>price</strong>, in addition to the interaction <strong>brand X price</strong>. The coefficients for a conjoint analysis are known as <em>part-worth utilities</em>. Not only does it display main effects, but it performs subject level analysis. Any subject with an R^2 value less than 0.3 are flagged for exclusion. The analysis should be based on subjects who are taking the task seriously Here is the syntax for a macro that will drop subjects who do not seem to fit the model:</p>
+<pre class="r"><code>data model;
+set utils;
+if statistic in (’R-Square’, ’Adj R-Sq’, ’Model’);
+Subj = scan(_depvar_, 2);
+if statistic = ’Model’ then do;
+value = numdf;
+statistic = ’Num DF’;
+output;
+value = dendf;
+statistic = ’Den DF’;
+output;
+value = dendf + numdf + 1;
+statistic = ’N’;
+end;
+output;
+keep statistic value subj;
+run;
+proc transpose data=model out=summ;
+by subj;
+idlabel statistic;
+id statistic;
+run;
+data summ2(drop=list);
+length list $ 1000;
+retain list;
+set summ end=eof;
+if adj_r_sq &lt; 0.3 then do;
+Small = ’*’;
+list = trim(list) || ’ ’ || subj;
+end;
+if eof then call symput(’droplist’, trim(list));
+run;
+%put &amp;droplist;
+proc print label data=summ2(drop=_name_ _label_); run;</code></pre>
+<p>You can run the analysis again, this time dropping the subjects with poor fit. Here is the code:</p>
+<pre class="r"><code>proc transreg data=inputdata(drop=&amp;droplist) utilities short noprint
+separators=’’ ’, ’ lprefix=0 outtest=utils method=morals;
+title2 ’Conjoint Analysis’;
+model identity(sub:) =
+class(brand | price meat mushroom ingredients / zero=sum);
+output p ireplace out=results2 coefficients;
+run;</code></pre>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

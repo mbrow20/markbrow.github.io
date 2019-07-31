@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Repeated_Response2.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mark V. Brow</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Repeated_Response2.html">Repeated Measures ANOVA</a>
+    </li>
+    <li>
+      <a href="ThreeWay.html">Three-Way ANOVA</a>
+    </li>
+    <li>
+      <a href="ConjointAnalysis2.html">Conjoint Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="contact.html">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/mbrow20">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/BrowMark">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/drmarkbrow/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<hr />
+<hr />
+<div id="simple-effects-for-repeated-measures-anova-design" class="section level2">
+<h2>Simple Effects for Repeated Measures ANOVA Design</h2>
+<div id="question-on-repeated-measures-t-test" class="section level3">
+<h3>Question on Repeated Measures T-Test</h3>
+<p>To address your question, let’s take the first results from the Excel spreadsheet. Here you compare the levels within <strong>order</strong> when <strong>proc = 1</strong> (that is, subsetting dataset on <strong>proc = 1</strong>). The results you obtain are the following:</p>
+<p><img src="EHuppert_ExcelOrderContrast.jpg" /></p>
+<p>This <strong>t-value</strong> is based on a One-Way ANOVA. You can check this by running a one-way ANOVA in SPSS. Here are the results:</p>
+<p><img src="EHuppert_HypocrisyOrderANOVA.jpg" /></p>
+<p>where <strong>sqrt(7.361) = 2.713</strong> and the <strong><em>df</em></strong> <strong>=</strong> <strong>582</strong> (from the within or error term in the <strong>F-test</strong>) and identical <strong>p-value = .007</strong>. This one-way ANOVA however is not accounting for the dependencies in the repeated observations (the correlation between the two observations, in other words, is zero, despite the fact that both observations come from the same individual). Here is <strong>mixed ANOVA</strong> from the same model that considers dependency between the repeated measures:</p>
+<pre class="r"><code>DATASET ACTIVATE Huppert_HypocrisyProcOne_Long.
+MIXED score BY order
+  /CRITERIA=CIN(95) MXITER(100) MXSTEP(10) SCORING(1) SINGULAR(0.000000000001) HCONVERGE(0, 
+    ABSOLUTE) LCONVERGE(0, ABSOLUTE) PCONVERGE(0.000001, ABSOLUTE)
+  /FIXED=order | SSTYPE(3)
+  /METHOD=REML
+  /PRINT=CORB DESCRIPTIVES  LMATRIX SOLUTION TESTCOV
+  /REPEATED=time | SUBJECT(id1) COVTYPE(AR1)
+  /EMMEANS=TABLES(OVERALL)
+  /EMMEANS=TABLES(order) COMPARE ADJ(LSD).</code></pre>
+<p>Here are the results:</p>
+<p><img src="EHuppert_HypocrisyProcOneMixed.jpg" /></p>
+<p>where <strong>sqrt(6.019) = 2.453</strong> and the <strong><em>df</em></strong> <strong>=</strong> <strong>290</strong>. This model accounts for the dependency of the observations. The same results can be reproduced with the <strong>nlme</strong> in R:</p>
+<pre class="r"><code>library(nlme)
+setwd(&quot;C:/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io&quot;)
+HypocrisyProcOne&lt;-read.csv(&quot;Huppert_HypocrisyProcOne_Long.csv&quot;,header=TRUE, sep=&quot;,&quot;)
+colnames(HypocrisyProcOne)&lt;-c(&quot;id1&quot;,&quot;id&quot;,&quot;proc&quot;,&quot;order&quot;,&quot;time&quot;,&quot;score&quot;)
+lme_proc = lme(score ~ order, data=HypocrisyProcOne, random = ~1|id1)
+anova(lme_proc)</code></pre>
+<pre><code>##             numDF denDF   F-value p-value
+## (Intercept)     1   292 2329.7704  &lt;.0001
+## order           1   290    6.0189  0.0147</code></pre>
+<p>where <strong>t(290) = 2.453, p = .015</strong> . Incidentally, we can obtain the same results by specifying a contrast test in SPSS:</p>
+<pre class="r"><code>DATASET ACTIVATE Huppert_HypocrisyProcOne_Long.
+MIXED score BY order time
+   /FIXED=order time order*time
+  /METHOD=REML
+  /PRINT=CORB  LMATRIX SOLUTION TESTCOV
+  /REPEATED=time | SUBJECT(id1) COVTYPE(AR1)
+  /TEST = &#39;order test&#39; order .5 -.5 order*time .25 .25 -.25 -.25.
+/Execute.</code></pre>
+<p>Here is the result from the contrast test:</p>
+<p><img src="EHuppert_HypocrisyProcOneContrast.jpg" /></p>
+<p>This same result, <strong>t(290) = 2.453, p = .015</strong>, is obtained with the <strong>F-test</strong> from the <strong>mixed</strong> command above, as well as the result from the <strong>nlme</strong> package. Notice that the <strong>contrast</strong> test in SPSS explicitly provides a <strong>t-value</strong> along with corresponding <strong><em>df</em></strong>.</p>
+<div id="summary" class="section level4">
+<h4>Summary</h4>
+<p>In summary, the results you have obtained are based on a <strong>one-way ANOVA</strong> that does not account for the dependency in the repeated observations. The <strong>mixed</strong> models presented here do account for the dependency in the repeated observations. You may want to run the <strong>nlme</strong> function on the data to obtain revised estimates. I could help you with this if you would like.</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

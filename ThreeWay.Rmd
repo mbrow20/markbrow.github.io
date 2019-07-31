@@ -1,0 +1,123 @@
+---
+title: "Two- and Three-Way Interactions and Contrasts for Morality Data"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Two-Way Interaction
+
+Let's start with the contrast of the two-levels of **'proc'** (i.e., *absolute* and *ambiguous*) and code it as **p1 = -.5** and **p2 = .5**. Since we are not contrasting the levels of **'order'**, we will code both levels *game1* and *survey1* as of equal weight, namely, **o1 = .5** and **o2 = .5**. In this model we are exploring the contrast of *absolute* and *ambiguous* proclamation when taking into account the interaction between averaged levels of *game1* and *survey1*. Any time that the higher-order term includes the contrast, for example, the interaction **order \* **proc** includes the contrast for **proc**, we need to include the contrast coding of the main effect, namely, the difference between *game1* and *survey1* in the variable **proc**. Recall that the order of the factors is determined in the **mixed** command in the SPSS syntax. Since **order** comes before **proc**, our contrast coding for the interaction would be the following:
+
+o1p1 = 1/2 \* -1/2 = **-1/4** o1p2 = 1/2 \* 1/2 = **1/4** o2p1 = 1/2 \* -1/2 = **-1/4** p2o2 = 1/2 \* 1/2 = **1/4**.
+
+A two-way table for the interaction contrast coding would look like the following:
+
+|        | proc level 1 = -.5 | proc level 2 = .5 |
+|:------:|:-----:|---------|
+| **order level 1 = .5** | 1/2 * -1/2 = -1/4 | 1/2 * 1/2 = 1/4 |
+| **order level 2 =  .5** |  1/2 * -1/2 =  -1/4 |  1/2 * 1/2 =  1/4 | 
+
+Here is the SPSS syntax for the model:
+
+```{r eval=FALSE}
+mixed score by order proc time
+  /PRINT LMATRIX
+ /fixed = time order proc order * proc
+ /repeated = time | subject(id) covtype(ar1)
+ /test = 'proc 1v2' proc -.5 .5 proc * order -1/4 1/4 -1/4 1/4.
+```
+
+Here are the results for significant effects,
+
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/MoralFixedEffects1.jpg)
+
+Below we see that the contrast of *survey1 - game1* is significant when interacting with averaged levels of **order**:
+
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/MoralContrastP1v2Order.jpg)
+
+## Three-Way Model including interaction of **proc \* time** and the three-way interaction
+In this example we will examine the same contrast above, namely, a contrast between the levels of **proc**, but use a model that includes the interaction of **proc** and **time** as well as the three-way interaction of **order\*proc\*time**. Since **proc** comes before **time**, the interaction between **proc\*time** would be p1t1 p1t2 p2t1 p2t2. Since **time** in not contrast coded, there will be assigned equal weights for the two levels of time, namely, 1/2 and 1/2. The coding scheme for the interaction of **proc** with **time** is the following:
+
+p1t1 = -1/2 \* 1/2 = **-1/4** p1t2 = 1/2 \* 1/2 = **-1/4** p2t1 = 1/2 \* 1/2 = **1/4** p2t2 = 1/2 \* 1/2 = **1/4**.
+
+A two-way table for the interaction contrast coding would look like the following:
+
+|        | time level 1 = .5 | time level 2 = .5 |
+|:------:|:-----:|---------|
+| **proc level 1 = -.5** | -1/2 * 1/2 = -1/4 | -1/2 * 1/2 = -1/4 |
+| **proc level 2 =  .5** |  1/2 * 1/2 =  1/4 |  1/2 * 1/2 =  1/4 | 
+
+The **order\*proc\*time** interaction is coded as o1p1t1 o1p1t2 o1p2t1 o1p2t2 o2p1t1 o2p1t2 o2p2t1 o2p2t2. Since the contrasts is only between levels of **proc** and not **order** or **time**, the levels within **order** and **time** are weighted equally. The levels within **order** and **time** will be "weighted" equally at 1/2. The contrast coding for the interaction above is therefore
+o1p1t1 = 1/2 \* -1/2 \* 1/2 = **-1/8** o1p1t2 = 1/2 \* -1/2 \* 1/2 = **-1/8** o1p2t1 = 1/2 \* 1/2 \* 1/2 = **1/8** o1p2t2 = 1/2 \* 1/2 \* 1/2 = **1/8** o2p1t1 =  1/2 \* -1/2 \* 1/2 = **-1/8** o2p1t2= 1/2 \* -1/2 \* 1/2 = **-1/8** o2p2t1 = 1/2 \* 1/2 \* 1/2 = **1/8** o2p2t2 = 1/2 \* 1/2 \* 1/2 = **1/8**. We can visualize this in two-way tables split by levels of **order**.
+
+: For **order** level 1 = 1/2
+
+|        | time level 1 = .5 | time level 2 = .5 |
+|:------:|:-----:|---------|
+| **proc level 1 = -.5** | 1/2 \* -1/2 * 1/2 = **-1/8** | 1/2 \* -1/2 * 1/2 = **-1/8** |
+| **proc level 2 =  .5** |  1/2 \* 1/2 * 1/2 =  **1/8** |  1/2 \* 1/2 * 1/2 =  **1/8**| 
+
+: For **order** level 2 = 1/2
+
+|        | time level 1 = .5 | time level 2 = .5 |
+|:------:|:-----:|---------|
+| **proc level 1 = -.5** | 1/2 \* -1/2 * 1/2 = **-1/8** | 1/2 \* -1/2 * 1/2 = **-1/8** |
+| **proc level 2 =  .5** |  1/2 \* 1/2 * 1/2 =  **1/8** |  1/2 \* 1/2 * 1/2 =  **1/8** | 
+
+```{r eval=FALSE}
+mixed score by order proc time
+  /fixed =  time order proc order*proc order*proc*time 
+  /repeated = time | subject(id) covtype(ar1)
+  /test = 'prov 1v2' proc -.5 .5 
+   order*proc -1/4 1/4 -1/4 1/4 
+   order*proc*time -1/8 -1/8 1/8 1/8 -1/8 -1/8 1/8 1/8.
+```
+
+Here is the main and interaction effects:
+
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/MoralFixedEffectsThree.jpg)
+
+The contrast for the three-way model is the same with the contrast model with the two-way interaction.
+
+##Interaction Contrasts
+Perhaps you want to consider the contrast between *absolute* and *ambiguous* proclamation when **survey1** is presented first. This would require the two-way contrast. In the previous example, we considered the contrast between the two levels of *proc* averaged over the two levels of *order*. Here we will need to contrast code the levels for both *proc* and *order*.
+Below are the graphs of **absolute** versus **ambiguous** within each level of *order*. As you can see, the graphs are very different:
+
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphProcTimeByOrder.jpg)
+
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphProc2TimeByOrder.jpg)
+
+The **order** \* **proc** interaction is coded as o1p1 o1p2 o2p1 o2p2. The contrast coding for **order** at level 1 =1 and at level 2 = -1 (recall, we are not averaging but contrasting). The contrast coding for **proc** is level 1 =1 and level 2 = -1. Coding for the interaction would look like this:
+o1p1 = 1 \* 1 = **1** o1p2 = 1 \* -1 = **-1** o2p1 = -1 \* 1 = **-1** o2p2 = -1 \* -1 = **1**
+
+Here is the SPSS syntax for the interaction contrast for **order** \* **proc**:
+```{r eval = FALSE}
+DATASET ACTIVATE DataSet1.
+  mixed score by order proc time 
+  /fixed =   order proc time order*proc 
+  /repeated = time | subject(id) covtype(ar1)
+  /test = 'prov 1v2 & order1v2' order*proc  1 -1 -1 1. 
+```
+Here are the fixed effects specified in the syntax file (and in the model):
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphFixedEffectsMoral.jpg)
+
+Here is the custom interaction contrast:
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/twowayContrastMoral.jpg)
+
+This could be interpreted as the difference between *absolute* and *ambiguous* proclamation is significantly different when *game1* is presented first versus when *survey1* is presented first.
+The next model will perform the same contrast as above, but while including all the two-way and three-way interactions. We have already coded the **order** \* **proc** interaction. Now we have to code the three-way interaction as we had done previously: o1p1t1 o1p1t2 o1p2t1 o1p2t2 o2p1t1 o2p1t2 o2p2t1 o2p2t2. The contrast coding for **order** is the same as above, namely, **order** at level 1 =1 and at level 2 = -1, as well as the contrast coding for **proc**, that is, **proc** at level 1 =1 and at level 2 = -1.Like previously, we will weight all the levels of time as the same (i.e., 1/2):
+o1p1t1 = 1 \* 1 \* 1/2 = **1/2**; o1p1t2 = 1 \* 1 \* 1/2 = **1/2**; o1p2t1 = 1 \* -1 \* 1/2 = **-1/2**; o1p2t2 = 1 \* -1 \* 1/2 = **-1/2**; o2p1t1 =  -1 \* 1 \* 1/2 = **-1/2**; o2p1t2= -1 \* 1 \* 1/2 = **-1/2**; o2p2t1 = -1 \* -1 \* 1/2 = **1/2**; o2p2t2 = -1 \* -1 \* 1/2 = **1/2**.
+
+```{r eval = FALSE}
+mixed score by order proc time
+  /fixed = time order proc time*proc order*proc time*order order*proc*time
+  /repeated = time | subject(id) covtype(cs)
+  /test = 'proc 1v2, order 1v2' order*proc 1 -1 1 -1 1
+    order*proc*time 1/2 1/2 -1/2 -1/2 -1/2 -1/2 1/2 1/2.
+```
+Note how we include the 'lower-order' interaction contrast of interest, namely 'prov 1v2, order 1v2', with the three-way interaction, since the interaction contrast is contained within the three-way contrast. In this model we will consider all the two-way and three-way interaction effects:
+![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphFixedEffectsMoral3.jpg)
+
+When the interaction contrast is taken over the average effect of time, the interaction contrast is identical to the results when we did not include the three-way interaction.

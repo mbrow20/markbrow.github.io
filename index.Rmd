@@ -1,0 +1,10 @@
+---
+
+---
+
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+
+<img src="pictureme21.jpeg" style="width:25%; border:3px solid; margin-right: 20px" align="left">
+
+This website is meant to provide practical guidelines for some of the more frequent research applications I have encountered here at the [Center for Decision Research](https://research.chicagobooth.edu/cdr). Throughout these applications I will use a variety of statistical packages (e.g., SPSS, SAS, R) in order to 1) demonstrate the relative strengths of the different packages and 2) to obtain a more comprehensive perspective on the issue. I anticipate expanding the range of analyses to include such topics as non-parametric and machine learning techniques as well as Rasch/IRT analysis for assessment development and evaluation. Hopefully you can gain some relevant information on these topics and perhaps incorporate these techniques into your own research projects. If you have any questions, please contact me.

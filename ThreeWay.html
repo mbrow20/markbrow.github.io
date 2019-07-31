@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Two- and Three-Way Interactions and Contrasts for Morality Data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mark V. Brow</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Analysis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Repeated_Response2.html">Repeated Measures ANOVA</a>
+    </li>
+    <li>
+      <a href="ThreeWay.html">Three-Way ANOVA</a>
+    </li>
+    <li>
+      <a href="ConjointAnalysis2.html">Conjoint Analysis</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="contact.html">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/mbrow20">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/BrowMark">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/drmarkbrow/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Two- and Three-Way Interactions and Contrasts for Morality Data</h1>
+
+</div>
+
+
+<div id="two-way-interaction" class="section level2">
+<h2>Two-Way Interaction</h2>
+<p>Let’s start with the contrast of the two-levels of <strong>‘proc’</strong> (i.e., <em>absolute</em> and <em>ambiguous</em>) and code it as <strong>p1 = -.5</strong> and <strong>p2 = .5</strong>. Since we are not contrasting the levels of <strong>‘order’</strong>, we will code both levels <em>game1</em> and <em>survey1</em> as of equal weight, namely, <strong>o1 = .5</strong> and <strong>o2 = .5</strong>. In this model we are exploring the contrast of <em>absolute</em> and <em>ambiguous</em> proclamation when taking into account the interaction between averaged levels of <em>game1</em> and <em>survey1</em>. Any time that the higher-order term includes the contrast, for example, the interaction <strong>order * </strong>proc** includes the contrast for <strong>proc</strong>, we need to include the contrast coding of the main effect, namely, the difference between <em>game1</em> and <em>survey1</em> in the variable <strong>proc</strong>. Recall that the order of the factors is determined in the <strong>mixed</strong> command in the SPSS syntax. Since <strong>order</strong> comes before <strong>proc</strong>, our contrast coding for the interaction would be the following:</p>
+<p>o1p1 = 1/2 * -1/2 = <strong>-1/4</strong> o1p2 = 1/2 * 1/2 = <strong>1/4</strong> o2p1 = 1/2 * -1/2 = <strong>-1/4</strong> p2o2 = 1/2 * 1/2 = <strong>1/4</strong>.</p>
+<p>A two-way table for the interaction contrast coding would look like the following:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">proc level 1 = -.5</th>
+<th>proc level 2 = .5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>order level 1 = .5</strong></td>
+<td align="center">1/2 * -1/2 = -1/4</td>
+<td>1/2 * 1/2 = 1/4</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>order level 2 = .5</strong></td>
+<td align="center">1/2 * -1/2 = -1/4</td>
+<td>1/2 * 1/2 = 1/4</td>
+</tr>
+</tbody>
+</table>
+<p>Here is the SPSS syntax for the model:</p>
+<pre class="r"><code>mixed score by order proc time
+  /PRINT LMATRIX
+ /fixed = time order proc order * proc
+ /repeated = time | subject(id) covtype(ar1)
+ /test = &#39;proc 1v2&#39; proc -.5 .5 proc * order -1/4 1/4 -1/4 1/4.</code></pre>
+<p>Here are the results for significant effects,</p>
+<p><img src="MoralFixedEffects1.jpg" /></p>
+<p>Below we see that the contrast of <em>survey1 - game1</em> is significant when interacting with averaged levels of <strong>order</strong>:</p>
+<p><img src="MoralContrastP1v2Order.jpg" /></p>
+</div>
+<div id="three-way-model-including-interaction-of-proc-time-and-the-three-way-interaction" class="section level2">
+<h2>Three-Way Model including interaction of <strong>proc * time</strong> and the three-way interaction</h2>
+<p>In this example we will examine the same contrast above, namely, a contrast between the levels of <strong>proc</strong>, but use a model that includes the interaction of <strong>proc</strong> and <strong>time</strong> as well as the three-way interaction of <strong>order*proc*time</strong>. Since <strong>proc</strong> comes before <strong>time</strong>, the interaction between <strong>proc*time</strong> would be p1t1 p1t2 p2t1 p2t2. Since <strong>time</strong> in not contrast coded, there will be assigned equal weights for the two levels of time, namely, 1/2 and 1/2. The coding scheme for the interaction of <strong>proc</strong> with <strong>time</strong> is the following:</p>
+<p>p1t1 = -1/2 * 1/2 = <strong>-1/4</strong> p1t2 = 1/2 * 1/2 = <strong>-1/4</strong> p2t1 = 1/2 * 1/2 = <strong>1/4</strong> p2t2 = 1/2 * 1/2 = <strong>1/4</strong>.</p>
+<p>A two-way table for the interaction contrast coding would look like the following:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">time level 1 = .5</th>
+<th>time level 2 = .5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>proc level 1 = -.5</strong></td>
+<td align="center">-1/2 * 1/2 = -1/4</td>
+<td>-1/2 * 1/2 = -1/4</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>proc level 2 = .5</strong></td>
+<td align="center">1/2 * 1/2 = 1/4</td>
+<td>1/2 * 1/2 = 1/4</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>order*proc*time</strong> interaction is coded as o1p1t1 o1p1t2 o1p2t1 o1p2t2 o2p1t1 o2p1t2 o2p2t1 o2p2t2. Since the contrasts is only between levels of <strong>proc</strong> and not <strong>order</strong> or <strong>time</strong>, the levels within <strong>order</strong> and <strong>time</strong> are weighted equally. The levels within <strong>order</strong> and <strong>time</strong> will be “weighted” equally at 1/2. The contrast coding for the interaction above is therefore o1p1t1 = 1/2 * -1/2 * 1/2 = <strong>-1/8</strong> o1p1t2 = 1/2 * -1/2 * 1/2 = <strong>-1/8</strong> o1p2t1 = 1/2 * 1/2 * 1/2 = <strong>1/8</strong> o1p2t2 = 1/2 * 1/2 * 1/2 = <strong>1/8</strong> o2p1t1 = 1/2 * -1/2 * 1/2 = <strong>-1/8</strong> o2p1t2= 1/2 * -1/2 * 1/2 = <strong>-1/8</strong> o2p2t1 = 1/2 * 1/2 * 1/2 = <strong>1/8</strong> o2p2t2 = 1/2 * 1/2 * 1/2 = <strong>1/8</strong>. We can visualize this in two-way tables split by levels of <strong>order</strong>.</p>
+<table>
+<caption>For <strong>order</strong> level 1 = 1/2</caption>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">time level 1 = .5</th>
+<th>time level 2 = .5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>proc level 1 = -.5</strong></td>
+<td align="center">1/2 * -1/2 * 1/2 = <strong>-1/8</strong></td>
+<td>1/2 * -1/2 * 1/2 = <strong>-1/8</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>proc level 2 = .5</strong></td>
+<td align="center">1/2 * 1/2 * 1/2 = <strong>1/8</strong></td>
+<td>1/2 * 1/2 * 1/2 = <strong>1/8</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>For <strong>order</strong> level 2 = 1/2</caption>
+<thead>
+<tr class="header">
+<th align="center"></th>
+<th align="center">time level 1 = .5</th>
+<th>time level 2 = .5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>proc level 1 = -.5</strong></td>
+<td align="center">1/2 * -1/2 * 1/2 = <strong>-1/8</strong></td>
+<td>1/2 * -1/2 * 1/2 = <strong>-1/8</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>proc level 2 = .5</strong></td>
+<td align="center">1/2 * 1/2 * 1/2 = <strong>1/8</strong></td>
+<td>1/2 * 1/2 * 1/2 = <strong>1/8</strong></td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>mixed score by order proc time
+  /fixed =  time order proc order*proc order*proc*time 
+  /repeated = time | subject(id) covtype(ar1)
+  /test = &#39;prov 1v2&#39; proc -.5 .5 
+   order*proc -1/4 1/4 -1/4 1/4 
+   order*proc*time -1/8 -1/8 1/8 1/8 -1/8 -1/8 1/8 1/8.</code></pre>
+<p>Here is the main and interaction effects:</p>
+<p><img src="MoralFixedEffectsThree.jpg" /></p>
+<p>The contrast for the three-way model is the same with the contrast model with the two-way interaction.</p>
+<p>##Interaction Contrasts Perhaps you want to consider the contrast between <em>absolute</em> and <em>ambiguous</em> proclamation when <strong>survey1</strong> is presented first. This would require the two-way contrast. In the previous example, we considered the contrast between the two levels of <em>proc</em> averaged over the two levels of <em>order</em>. Here we will need to contrast code the levels for both <em>proc</em> and <em>order</em>. Below are the graphs of <strong>absolute</strong> versus <strong>ambiguous</strong> within each level of <em>order</em>. As you can see, the graphs are very different:</p>
+<p><img src="graphProcTimeByOrder.jpg" /></p>
+<p><img src="graphProc2TimeByOrder.jpg" /></p>
+<p>The <strong>order</strong> * <strong>proc</strong> interaction is coded as o1p1 o1p2 o2p1 o2p2. The contrast coding for <strong>order</strong> at level 1 =1 and at level 2 = -1 (recall, we are not averaging but contrasting). The contrast coding for <strong>proc</strong> is level 1 =1 and level 2 = -1. Coding for the interaction would look like this: o1p1 = 1 * 1 = <strong>1</strong> o1p2 = 1 * -1 = <strong>-1</strong> o2p1 = -1 * 1 = <strong>-1</strong> o2p2 = -1 * -1 = <strong>1</strong></p>
+<p>Here is the SPSS syntax for the interaction contrast for <strong>order</strong> * <strong>proc</strong>:</p>
+<pre class="r"><code>DATASET ACTIVATE DataSet1.
+  mixed score by order proc time 
+  /fixed =   order proc time order*proc 
+  /repeated = time | subject(id) covtype(ar1)
+  /test = &#39;prov 1v2 &amp; order1v2&#39; order*proc  1 -1 -1 1. </code></pre>
+<p>Here are the fixed effects specified in the syntax file (and in the model): <img src="graphFixedEffectsMoral.jpg" /></p>
+<p>Here is the custom interaction contrast: <img src="twowayContrastMoral.jpg" /></p>
+<p>This could be interpreted as the difference between <em>absolute</em> and <em>ambiguous</em> proclamation is significantly different when <em>game1</em> is presented first versus when <em>survey1</em> is presented first. The next model will perform the same contrast as above, but while including all the two-way and three-way interactions. We have already coded the <strong>order</strong> * <strong>proc</strong> interaction. Now we have to code the three-way interaction as we had done previously: o1p1t1 o1p1t2 o1p2t1 o1p2t2 o2p1t1 o2p1t2 o2p2t1 o2p2t2. The contrast coding for <strong>order</strong> is the same as above, namely, <strong>order</strong> at level 1 =1 and at level 2 = -1, as well as the contrast coding for <strong>proc</strong>, that is, <strong>proc</strong> at level 1 =1 and at level 2 = -1.Like previously, we will weight all the levels of time as the same (i.e., 1/2): o1p1t1 = 1 * 1 * 1/2 = <strong>1/2</strong>; o1p1t2 = 1 * 1 * 1/2 = <strong>1/2</strong>; o1p2t1 = 1 * -1 * 1/2 = <strong>-1/2</strong>; o1p2t2 = 1 * -1 * 1/2 = <strong>-1/2</strong>; o2p1t1 = -1 * 1 * 1/2 = <strong>-1/2</strong>; o2p1t2= -1 * 1 * 1/2 = <strong>-1/2</strong>; o2p2t1 = -1 * -1 * 1/2 = <strong>1/2</strong>; o2p2t2 = -1 * -1 * 1/2 = <strong>1/2</strong>.</p>
+<pre class="r"><code>mixed score by order proc time
+  /fixed = time order proc time*proc order*proc time*order order*proc*time
+  /repeated = time | subject(id) covtype(cs)
+  /test = &#39;proc 1v2, order 1v2&#39; order*proc 1 -1 1 -1 1
+    order*proc*time 1/2 1/2 -1/2 -1/2 -1/2 -1/2 1/2 1/2.</code></pre>
+<p>Note how we include the ‘lower-order’ interaction contrast of interest, namely ‘prov 1v2, order 1v2’, with the three-way interaction, since the interaction contrast is contained within the three-way contrast. In this model we will consider all the two-way and three-way interaction effects: <img src="graphFixedEffectsMoral3.jpg" /></p>
+<p>When the interaction contrast is taken over the average effect of time, the interaction contrast is identical to the results when we did not include the three-way interaction.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
