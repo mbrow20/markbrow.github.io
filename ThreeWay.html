@@ -383,9 +383,9 @@ $(document).ready(function () {
  /repeated = time | subject(id) covtype(ar1)
  /test = &#39;proc 1v2&#39; proc -.5 .5 proc * order -1/4 1/4 -1/4 1/4.</code></pre>
 <p>Here are the results for significant effects,</p>
-<p><img src="MoralFixedEffects1.jpg" /></p>
+<p><img src="MoralFixedEffects1.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>Below we see that the contrast of <em>survey1 - game1</em> is significant when interacting with averaged levels of <strong>order</strong>:</p>
-<p><img src="MoralContrastP1v2Order.jpg" /></p>
+<p><img src="MoralContrastP1v2Order.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 </div>
 <div id="three-way-model-including-interaction-of-proc-time-and-the-three-way-interaction" class="section level2">
 <h2>Three-Way Model including interaction of <strong>proc * time</strong> and the three-way interaction</h2>
@@ -465,11 +465,11 @@ $(document).ready(function () {
    order*proc -1/4 1/4 -1/4 1/4 
    order*proc*time -1/8 -1/8 1/8 1/8 -1/8 -1/8 1/8 1/8.</code></pre>
 <p>Here is the main and interaction effects:</p>
-<p><img src="MoralFixedEffectsThree.jpg" /></p>
+<p><img src="MoralFixedEffectsThree.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>The contrast for the three-way model is the same with the contrast model with the two-way interaction.</p>
 <p>##Interaction Contrasts Perhaps you want to consider the contrast between <em>absolute</em> and <em>ambiguous</em> proclamation when <strong>survey1</strong> is presented first. This would require the two-way contrast. In the previous example, we considered the contrast between the two levels of <em>proc</em> averaged over the two levels of <em>order</em>. Here we will need to contrast code the levels for both <em>proc</em> and <em>order</em>. Below are the graphs of <strong>absolute</strong> versus <strong>ambiguous</strong> within each level of <em>order</em>. As you can see, the graphs are very different:</p>
-<p><img src="graphProcTimeByOrder.jpg" /></p>
-<p><img src="graphProc2TimeByOrder.jpg" /></p>
+<p><img src="graphProcTimeByOrder.JPG" style="width:80%; margin-right: 20px" align="center"></p>
+<p><img src="graphProc2TimeByOrder.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>The <strong>order</strong> * <strong>proc</strong> interaction is coded as o1p1 o1p2 o2p1 o2p2. The contrast coding for <strong>order</strong> at level 1 =1 and at level 2 = -1 (recall, we are not averaging but contrasting). The contrast coding for <strong>proc</strong> is level 1 =1 and level 2 = -1. Coding for the interaction would look like this: o1p1 = 1 * 1 = <strong>1</strong> o1p2 = 1 * -1 = <strong>-1</strong> o2p1 = -1 * 1 = <strong>-1</strong> o2p2 = -1 * -1 = <strong>1</strong></p>
 <p>Here is the SPSS syntax for the interaction contrast for <strong>order</strong> * <strong>proc</strong>:</p>
 <pre class="r"><code>DATASET ACTIVATE DataSet1.
@@ -477,15 +477,18 @@ $(document).ready(function () {
   /fixed =   order proc time order*proc 
   /repeated = time | subject(id) covtype(ar1)
   /test = &#39;prov 1v2 &amp; order1v2&#39; order*proc  1 -1 -1 1. </code></pre>
-<p>Here are the fixed effects specified in the syntax file (and in the model): <img src="graphFixedEffectsMoral.jpg" /></p>
-<p>Here is the custom interaction contrast: <img src="twowayContrastMoral.jpg" /></p>
+<p>Here are the fixed effects specified in the syntax file (and in the model):</p>
+<p><img src="graphFixedEffectsMoral.JPG" style="width:80%; margin-right: 20px" align="center"></p>
+<p>Here is the custom interaction contrast:</p>
+<p><img src="twowayContrastMoral.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>This could be interpreted as the difference between <em>absolute</em> and <em>ambiguous</em> proclamation is significantly different when <em>game1</em> is presented first versus when <em>survey1</em> is presented first. The next model will perform the same contrast as above, but while including all the two-way and three-way interactions. We have already coded the <strong>order</strong> * <strong>proc</strong> interaction. Now we have to code the three-way interaction as we had done previously: o1p1t1 o1p1t2 o1p2t1 o1p2t2 o2p1t1 o2p1t2 o2p2t1 o2p2t2. The contrast coding for <strong>order</strong> is the same as above, namely, <strong>order</strong> at level 1 =1 and at level 2 = -1, as well as the contrast coding for <strong>proc</strong>, that is, <strong>proc</strong> at level 1 =1 and at level 2 = -1.Like previously, we will weight all the levels of time as the same (i.e., 1/2): o1p1t1 = 1 * 1 * 1/2 = <strong>1/2</strong>; o1p1t2 = 1 * 1 * 1/2 = <strong>1/2</strong>; o1p2t1 = 1 * -1 * 1/2 = <strong>-1/2</strong>; o1p2t2 = 1 * -1 * 1/2 = <strong>-1/2</strong>; o2p1t1 = -1 * 1 * 1/2 = <strong>-1/2</strong>; o2p1t2= -1 * 1 * 1/2 = <strong>-1/2</strong>; o2p2t1 = -1 * -1 * 1/2 = <strong>1/2</strong>; o2p2t2 = -1 * -1 * 1/2 = <strong>1/2</strong>.</p>
 <pre class="r"><code>mixed score by order proc time
   /fixed = time order proc time*proc order*proc time*order order*proc*time
   /repeated = time | subject(id) covtype(cs)
   /test = &#39;proc 1v2, order 1v2&#39; order*proc 1 -1 1 -1 1
     order*proc*time 1/2 1/2 -1/2 -1/2 -1/2 -1/2 1/2 1/2.</code></pre>
-<p>Note how we include the ‘lower-order’ interaction contrast of interest, namely ‘prov 1v2, order 1v2’, with the three-way interaction, since the interaction contrast is contained within the three-way contrast. In this model we will consider all the two-way and three-way interaction effects: <img src="graphFixedEffectsMoral3.jpg" /></p>
+<p>Note how we include the ‘lower-order’ interaction contrast of interest, namely ‘prov 1v2, order 1v2’, with the three-way interaction, since the interaction contrast is contained within the three-way contrast. In this model we will consider all the two-way and three-way interaction effects:</p>
+<p><img src="graphFixedEffectsMoral3.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>When the interaction contrast is taken over the average effect of time, the interaction contrast is identical to the results when we did not include the three-way interaction.</p>
 </div>
 

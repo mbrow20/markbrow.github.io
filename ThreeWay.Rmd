@@ -31,11 +31,14 @@ mixed score by order proc time
 
 Here are the results for significant effects,
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/MoralFixedEffects1.jpg)
+<img src="MoralFixedEffects1.JPG" style="width:80%; margin-right: 20px" align="center">
+
 
 Below we see that the contrast of *survey1 - game1* is significant when interacting with averaged levels of **order**:
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/MoralContrastP1v2Order.jpg)
+<img src="MoralContrastP1v2Order.JPG" style="width:80%; margin-right: 20px" align="center">
+
+
 
 ## Three-Way Model including interaction of **proc \* time** and the three-way interaction
 In this example we will examine the same contrast above, namely, a contrast between the levels of **proc**, but use a model that includes the interaction of **proc** and **time** as well as the three-way interaction of **order\*proc\*time**. Since **proc** comes before **time**, the interaction between **proc\*time** would be p1t1 p1t2 p2t1 p2t2. Since **time** in not contrast coded, there will be assigned equal weights for the two levels of time, namely, 1/2 and 1/2. The coding scheme for the interaction of **proc** with **time** is the following:
@@ -77,7 +80,9 @@ mixed score by order proc time
 
 Here is the main and interaction effects:
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/MoralFixedEffectsThree.jpg)
+<img src="MoralFixedEffectsThree.JPG" style="width:80%; margin-right: 20px" align="center">
+
+
 
 The contrast for the three-way model is the same with the contrast model with the two-way interaction.
 
@@ -85,9 +90,10 @@ The contrast for the three-way model is the same with the contrast model with th
 Perhaps you want to consider the contrast between *absolute* and *ambiguous* proclamation when **survey1** is presented first. This would require the two-way contrast. In the previous example, we considered the contrast between the two levels of *proc* averaged over the two levels of *order*. Here we will need to contrast code the levels for both *proc* and *order*.
 Below are the graphs of **absolute** versus **ambiguous** within each level of *order*. As you can see, the graphs are very different:
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphProcTimeByOrder.jpg)
+<img src="graphProcTimeByOrder.JPG" style="width:80%; margin-right: 20px" align="center">
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphProc2TimeByOrder.jpg)
+<img src="graphProc2TimeByOrder.JPG" style="width:80%; margin-right: 20px" align="center">
+
 
 The **order** \* **proc** interaction is coded as o1p1 o1p2 o2p1 o2p2. The contrast coding for **order** at level 1 =1 and at level 2 = -1 (recall, we are not averaging but contrasting). The contrast coding for **proc** is level 1 =1 and level 2 = -1. Coding for the interaction would look like this:
 o1p1 = 1 \* 1 = **1** o1p2 = 1 \* -1 = **-1** o2p1 = -1 \* 1 = **-1** o2p2 = -1 \* -1 = **1**
@@ -101,10 +107,14 @@ DATASET ACTIVATE DataSet1.
   /test = 'prov 1v2 & order1v2' order*proc  1 -1 -1 1. 
 ```
 Here are the fixed effects specified in the syntax file (and in the model):
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphFixedEffectsMoral.jpg)
+
+<img src="graphFixedEffectsMoral.JPG" style="width:80%; margin-right: 20px" align="center">
+
 
 Here is the custom interaction contrast:
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/twowayContrastMoral.jpg)
+
+<img src="twowayContrastMoral.JPG" style="width:80%; margin-right: 20px" align="center">
+
 
 This could be interpreted as the difference between *absolute* and *ambiguous* proclamation is significantly different when *game1* is presented first versus when *survey1* is presented first.
 The next model will perform the same contrast as above, but while including all the two-way and three-way interactions. We have already coded the **order** \* **proc** interaction. Now we have to code the three-way interaction as we had done previously: o1p1t1 o1p1t2 o1p2t1 o1p2t2 o2p1t1 o2p1t2 o2p2t1 o2p2t2. The contrast coding for **order** is the same as above, namely, **order** at level 1 =1 and at level 2 = -1, as well as the contrast coding for **proc**, that is, **proc** at level 1 =1 and at level 2 = -1.Like previously, we will weight all the levels of time as the same (i.e., 1/2):
@@ -118,6 +128,7 @@ mixed score by order proc time
     order*proc*time 1/2 1/2 -1/2 -1/2 -1/2 -1/2 1/2 1/2.
 ```
 Note how we include the 'lower-order' interaction contrast of interest, namely 'prov 1v2, order 1v2', with the three-way interaction, since the interaction contrast is contained within the three-way contrast. In this model we will consider all the two-way and three-way interaction effects:
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/graphFixedEffectsMoral3.jpg)
+
+<img src="graphFixedEffectsMoral3.JPG" style="width:80%; margin-right: 20px" align="center">
 
 When the interaction contrast is taken over the average effect of time, the interaction contrast is identical to the results when we did not include the three-way interaction.
