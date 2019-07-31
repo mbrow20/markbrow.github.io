@@ -1,0 +1,30 @@
+name: "Mark V. Brow"
+output_dir: "."
+navbar:
+  title: "Mark V. Brow"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Data Analysis"
+      menu:
+        - text: "Repeated Measures ANOVA"
+          href: Repeated_Response2.html
+        - text: "Three-Way ANOVA"
+          href: ThreeWay.html
+        - text: "Conjoint Analysis"
+          href: ConjointAnalysis2.html
+  right:
+    - icon: fa-envelope fa-lg
+      href: contact.html
+    - icon: fa-github fa-lg
+      href: https://github.com/mbrow20
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/BrowMark
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/drmarkbrow/
+output:
+  html_document:
+    theme: flatly
+    css: 'styles.css'
