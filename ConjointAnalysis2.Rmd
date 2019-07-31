@@ -21,7 +21,7 @@ title 'Consent Study';
 
 Here are the results:
 
-![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/RSommers2_FactorsWithLevels.jpg)
+![](/images/RSommers2_FactorsWithLevels.jpg)
 
 ![](/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io/RSommers2_Runs.jpg)
 
