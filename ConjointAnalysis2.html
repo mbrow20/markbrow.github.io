@@ -360,11 +360,11 @@ $(document).ready(function () {
 <pre class="r"><code>title &#39;Consent Study&#39;;
 %mktruns(4 4 2 2 2 2)</code></pre>
 <p>Here are the results:</p>
-<p><img src="RSommers2_Runs.JPG" style="width:100%; margin-right: 20px" align="center"></p>
+<p><img src="RSommers2_Runs.JPG" style="width:75%; margin-right: 20px" align="center"></p>
 <p>From the output above, the minimum number of runs for a balanced, orthogonal design (i.e., an “efficient” design) is 16 runs. Each “run” is a survey item that consists of a combination of the factor levels for all the factors.</p>
 <p>With 72 runs, you can get a fully orthogonal and balanced design. This may be prohibitive, however. Notice in the <strong>Violations</strong> column. There are 4 violations for the <em>36-run</em> design. Recall that orthogonal means that there is an equal number of the same pairs in each row (run). Some pair combinations cannot be divided by 8.</p>
 <p>But if the factor <strong>phrasings</strong> is reduced to six levels, these are the results: <img src="RSommers_ConsentLevSix.JPG" style="width:100%; margin-right: 20px" align="center"></p>
-<p><img src="RSommers_ConsentRunsSix.JPG" style="width:100%; margin-right: 20px" align="center"></p>
+<p><img src="RSommers_ConsentRunsSix.JPG" style="width:75%; margin-right: 20px" align="center"></p>
 <p>Here you see that an orthogonal and balanced design can be achieved with just 24 runs, without having to mess with violations.</p>
 <p><em>(try to create orthogonal and balanced designs, if possible, to avoid specifying restrictions)</em></p>
 <div id="restrictions-on-less-efficient-design" class="section level4">
@@ -395,7 +395,8 @@ seed=289) /* random number seed */
 <ol start="4" style="list-style-type: decimal">
 <li>Now we assign labels with the <strong>%Mktlab</strong> command:</li>
 </ol>
-<pre class="r"><code>%mktlab(data=randomized, vars=Condition Phrasing GenderPerpetrator RacePerpetrator GenderVictim RaceVictim,
+<pre class="r"><code>%mktlab(data=randomized, vars=Condition Phrasing GenderPerpetrator 
+RacePerpetrator GenderVictim RaceVictim,
 statements=format condition cd. phrasing ph. genderperpetrator gprp.
 raceperpetrator rprp. gendervictim gv. racevictim rv.,
 out=sasuser.consent2)</code></pre>
@@ -406,15 +407,15 @@ out=sasuser.consent2)</code></pre>
 <pre class="r"><code>%mkteval(data=sasuser.consent2)
 proc print data=sasuser.consent2; run;</code></pre>
 <p>Here is what the balance design would look like:</p>
-<p><img src="RSommers2_Schematic.JPG" style="width:100%; margin-right: 20px" align="center"></p>
+<p><img src="RSommers2_Schematic.JPG" style="width:75%; margin-right: 20px" align="center"></p>
 </div>
 </div>
 <div id="analyzing-the-data" class="section level2">
 <h2>Analyzing the Data</h2>
 <p>You can have SAS generate the questionnaire or create the questionnaire manually following the balanced and orthogonal specification table above. For analyzing the data, input the 24 responses per subject as rows of input lines:</p>
-<p><img src="RSommers_ResponseInput.jpg" style="width:50%; margin-right: 20px" align="center"></p>
+<p><img src="RSommers_ResponseInput.JPG" style="width:50%; margin-right: 20px" align="center"></p>
 <p>The input from above corresponds to a study with 30 runs. You perform the metric conjoint analysis using the <strong>PROC TRANSREG</strong> function:</p>
-<p><img src="RSommers_ResponseInput.jpg" style="width:45%; margin-right: 20px" align="center"></p>
+<p><img src="RSommers_ResponseInput.JPG" style="width:45%; margin-right: 20px" align="center"></p>
 <p>In the figure above, <strong>factors</strong> are specified as <strong>class</strong> variables. This will give you the main effects and any interactions <strong>that you specify</strong>. Notice the <strong>brand|price</strong> specification. This tells you that you want the main effects of <strong>brand</strong> and <strong>price</strong>, in addition to the interaction <strong>brand X price</strong>. The coefficients for a conjoint analysis are known as <em>part-worth utilities</em>. Not only does it display main effects, but it performs subject level analysis. Any subject with an R^2 value less than 0.3 are flagged for exclusion. The analysis should be based on subjects who are taking the task seriously Here is the syntax for a macro that will drop subjects who do not seem to fit the model:</p>
 <pre class="r"><code>data model;
 set utils;

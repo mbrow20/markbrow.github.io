@@ -21,7 +21,7 @@ title 'Consent Study';
 
 Here are the results:
 
-<img src="RSommers2_Runs.JPG" style="width:100%; margin-right: 20px" align="center">
+<img src="RSommers2_Runs.JPG" style="width:75%; margin-right: 20px" align="center">
 
 From the output above, the minimum number of runs for a balanced, orthogonal design (i.e., an "efficient" design) is 16 runs. Each "run" is a survey item that consists of a combination of the factor levels for all the factors.
 
@@ -31,7 +31,7 @@ But if the factor **phrasings** is reduced to six levels, these are the results:
 <img src="RSommers_ConsentLevSix.JPG" style="width:100%; margin-right: 20px" align="center">
 
 
-<img src="RSommers_ConsentRunsSix.JPG" style="width:100%; margin-right: 20px" align="center">
+<img src="RSommers_ConsentRunsSix.JPG" style="width:75%; margin-right: 20px" align="center">
 
 
 Here you see that an orthogonal and balanced design can be achieved with just 24 runs, without having to mess with violations.
@@ -79,7 +79,8 @@ From the Efficiency statistics above, we see that this is a perfectly balanced a
 
 
 ```{r eval=FALSE}
-%mktlab(data=randomized, vars=Condition Phrasing GenderPerpetrator RacePerpetrator GenderVictim RaceVictim,
+%mktlab(data=randomized, vars=Condition Phrasing GenderPerpetrator 
+RacePerpetrator GenderVictim RaceVictim,
 statements=format condition cd. phrasing ph. genderperpetrator gprp.
 raceperpetrator rprp. gendervictim gv. racevictim rv.,
 out=sasuser.consent2)
@@ -96,19 +97,19 @@ proc print data=sasuser.consent2; run;
 
 Here is what the balance design would look like:
 
-<img src="RSommers2_Schematic.JPG" style="width:100%; margin-right: 20px" align="center">
+<img src="RSommers2_Schematic.JPG" style="width:75%; margin-right: 20px" align="center">
 
 ## Analyzing the Data
 
 You can have SAS generate the questionnaire or create the questionnaire manually following the balanced and orthogonal specification table above. For analyzing the data, input the 24 responses per subject as rows of input lines:
 
-<img src="RSommers_ResponseInput.jpg" style="width:50%; margin-right: 20px" align="center">
+<img src="RSommers_ResponseInput.JPG" style="width:50%; margin-right: 20px" align="center">
 
 
 
 The input from above corresponds to a study with 30 runs. You perform the metric conjoint analysis using the **PROC TRANSREG** function:
 
-<img src="RSommers_ResponseInput.jpg" style="width:45%; margin-right: 20px" align="center">
+<img src="RSommers_ResponseInput.JPG" style="width:45%; margin-right: 20px" align="center">
 
 
 In the figure above, **factors** are specified as **class** variables. This will give you the main effects and any interactions **that you specify**. Notice the **brand|price** specification. This tells you that you want the main effects of **brand** and **price**, in addition to the interaction **brand X price**. The coefficients for a conjoint analysis are known as *part-worth utilities*. Not only does it display main effects, but it performs subject level analysis. Any subject with an R^2 value less than 0.3 are flagged for exclusion. The analysis should be based on subjects who are taking the task seriously Here is the syntax for a macro that will drop subjects who do not seem to fit the model:
