@@ -356,11 +356,11 @@ $(document).ready(function () {
 <div id="question-on-repeated-measures-t-test" class="section level3">
 <h3>Question on Repeated Measures T-Test</h3>
 <p>To address your question, let’s take the first results from the Excel spreadsheet. Here you compare the levels within <strong>order</strong> when <strong>proc = 1</strong> (that is, subsetting dataset on <strong>proc = 1</strong>). The results you obtain are the following.</p>
-<p><img src="EHuppert_ExcelOrderContrast.JPG" style="width:50%; margin-right: 20px" align="center"></p>
+<p><img src="ExcelOrderContrast.JPG" style="width:50%; margin-right: 20px" align="center"></p>
 <p>This <strong>t-value</strong> is based on a One-Way ANOVA. You can check this by running a one-way ANOVA in SPSS. Here are the results:</p>
-<p><img src="EHuppert_HypocrisyOrderANOVA.JPG" style="width:80%; margin-right: 20px" align="center"></p>
+<p><img src="HypocrisyOrderANOVA.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>where <strong>sqrt(7.361) = 2.713</strong> and the <strong><em>df</em></strong> <strong>=</strong> <strong>582</strong> (from the within or error term in the <strong>F-test</strong>) and identical <strong>p-value = .007</strong>. This one-way ANOVA however is not accounting for the dependencies in the repeated observations (the correlation between the two observations, in other words, is zero, despite the fact that both observations come from the same individual). Here is <strong>mixed ANOVA</strong> from the same model that considers dependency between the repeated measures:</p>
-<pre class="r"><code>DATASET ACTIVATE Huppert_HypocrisyProcOne_Long.
+<pre class="r"><code>DATASET ACTIVATE HypocrisyProcOne_Long.
 MIXED score BY order
   /CRITERIA=CIN(95) MXITER(100) MXSTEP(10) SCORING(1) SINGULAR(0.000000000001) HCONVERGE(0, 
     ABSOLUTE) LCONVERGE(0, ABSOLUTE) PCONVERGE(0.000001, ABSOLUTE)
@@ -371,11 +371,11 @@ MIXED score BY order
   /EMMEANS=TABLES(OVERALL)
   /EMMEANS=TABLES(order) COMPARE ADJ(LSD).</code></pre>
 <p>Here are the results:</p>
-<p><img src="EHuppert_HypocrisyProcOneMixed.JPG" style="width:80%; margin-right: 20px" align="center"></p>
+<p><img src="HypocrisyProcOneMixed.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>where <strong>sqrt(6.019) = 2.453</strong> and the <strong><em>df</em></strong> <strong>=</strong> <strong>290</strong>. This model accounts for the dependency of the observations. The same results can be reproduced with the <strong>nlme</strong> in R:</p>
 <pre class="r"><code>library(nlme)
 setwd(&quot;C:/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io&quot;)
-HypocrisyProcOne&lt;-read.csv(&quot;Huppert_HypocrisyProcOne_Long.csv&quot;,header=TRUE, sep=&quot;,&quot;)
+HypocrisyProcOne&lt;-read.csv(&quot;HypocrisyProcOne_Long.csv&quot;,header=TRUE, sep=&quot;,&quot;)
 colnames(HypocrisyProcOne)&lt;-c(&quot;id1&quot;,&quot;id&quot;,&quot;proc&quot;,&quot;order&quot;,&quot;time&quot;,&quot;score&quot;)
 lme_proc = lme(score ~ order, data=HypocrisyProcOne, random = ~1|id1)
 anova(lme_proc)</code></pre>
@@ -383,7 +383,7 @@ anova(lme_proc)</code></pre>
 ## (Intercept)     1   292 2329.7704  &lt;.0001
 ## order           1   290    6.0189  0.0147</code></pre>
 <p>where <strong>t(290) = 2.453, p = .015</strong> . Incidentally, we can obtain the same results by specifying a contrast test in SPSS:</p>
-<pre class="r"><code>DATASET ACTIVATE Huppert_HypocrisyProcOne_Long.
+<pre class="r"><code>DATASET ACTIVATE HypocrisyProcOne_Long.
 MIXED score BY order time
    /FIXED=order time order*time
   /METHOD=REML
@@ -392,7 +392,7 @@ MIXED score BY order time
   /TEST = &#39;order test&#39; order .5 -.5 order*time .25 .25 -.25 -.25.
 /Execute.</code></pre>
 <p>Here is the result from the contrast test:</p>
-<p><img src="EHuppert_HypocrisyProcOneContrast.JPG" style="width:80%; margin-right: 20px" align="center"></p>
+<p><img src="HypocrisyProcOneContrast.JPG" style="width:80%; margin-right: 20px" align="center"></p>
 <p>This same result, <strong>t(290) = 2.453, p = .015</strong>, is obtained with the <strong>F-test</strong> from the <strong>mixed</strong> command above, as well as the result from the <strong>nlme</strong> package. Notice that the <strong>contrast</strong> test in SPSS explicitly provides a <strong>t-value</strong> along with corresponding <strong><em>df</em></strong>.</p>
 <div id="summary" class="section level4">
 <h4>Summary</h4>

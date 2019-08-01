@@ -12,14 +12,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 To address your question, let's take the first results from the Excel spreadsheet. Here you compare the levels within **order** when **proc = 1** (that is, subsetting dataset on **proc = 1**). The results you obtain are the following.
 
-<img src="EHuppert_ExcelOrderContrast.JPG" style="width:50%; margin-right: 20px" align="center">
+<img src="ExcelOrderContrast.JPG" style="width:50%; margin-right: 20px" align="center">
 
 
 
 This **t-value** is based on a One-Way ANOVA. You can check this by running a one-way ANOVA in
 SPSS. Here are the results:
 
-<img src="EHuppert_HypocrisyOrderANOVA.JPG" style="width:80%; margin-right: 20px" align="center">
+<img src="HypocrisyOrderANOVA.JPG" style="width:80%; margin-right: 20px" align="center">
 
 
 
@@ -28,7 +28,7 @@ SPSS. Here are the results:
 where **sqrt(7.361) = 2.713** and the ***df*** **=** **582** (from the within or error term in the **F-test**) and identical **p-value = .007**. This one-way ANOVA however is not accounting for the dependencies in the repeated observations (the correlation between the two observations, in other words, is zero, despite the fact that both observations come from the same individual). Here is **mixed ANOVA** from the same model that considers dependency between the repeated measures:
 
 ```{r eval=FALSE}
-DATASET ACTIVATE Huppert_HypocrisyProcOne_Long.
+DATASET ACTIVATE HypocrisyProcOne_Long.
 MIXED score BY order
   /CRITERIA=CIN(95) MXITER(100) MXSTEP(10) SCORING(1) SINGULAR(0.000000000001) HCONVERGE(0, 
     ABSOLUTE) LCONVERGE(0, ABSOLUTE) PCONVERGE(0.000001, ABSOLUTE)
@@ -43,7 +43,7 @@ MIXED score BY order
 
 Here are the results:
 
-<img src="EHuppert_HypocrisyProcOneMixed.JPG" style="width:80%; margin-right: 20px" align="center">
+<img src="HypocrisyProcOneMixed.JPG" style="width:80%; margin-right: 20px" align="center">
 
 
 
@@ -52,7 +52,7 @@ where **sqrt(6.019) = 2.453** and the ***df*** **=** **290**. This model account
 ```{r eval=TRUE}
 library(nlme)
 setwd("C:/Users/Mark V. Brow/Desktop/Repository11/markbrow.github.io")
-HypocrisyProcOne<-read.csv("Huppert_HypocrisyProcOne_Long.csv",header=TRUE, sep=",")
+HypocrisyProcOne<-read.csv("HypocrisyProcOne_Long.csv",header=TRUE, sep=",")
 colnames(HypocrisyProcOne)<-c("id1","id","proc","order","time","score")
 lme_proc = lme(score ~ order, data=HypocrisyProcOne, random = ~1|id1)
 anova(lme_proc)
@@ -62,7 +62,7 @@ where **t(290) = 2.453, p = .015** . Incidentally, we can obtain the same result
 
 
 ```{r eval=FALSE}
-DATASET ACTIVATE Huppert_HypocrisyProcOne_Long.
+DATASET ACTIVATE HypocrisyProcOne_Long.
 MIXED score BY order time
    /FIXED=order time order*time
   /METHOD=REML
@@ -75,7 +75,7 @@ MIXED score BY order time
 
 Here is the result from the contrast test:
 
-<img src="EHuppert_HypocrisyProcOneContrast.JPG" style="width:80%; margin-right: 20px" align="center">
+<img src="HypocrisyProcOneContrast.JPG" style="width:80%; margin-right: 20px" align="center">
 
 
 
