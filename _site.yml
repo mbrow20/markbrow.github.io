@@ -1,5 +1,6 @@
 name: "Mark V. Brow"
 output_dir: "."
+base_url: https://mbrow20.shinyapps.io/NewMarkDownWithShiny/
 navbar:
   title: "Mark V. Brow"
   left:
