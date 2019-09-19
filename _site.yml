@@ -9,8 +9,9 @@ navbar:
       href: about.html
     - text: "Data Analysis"
       menu:
-        - text: "Repeated Measures ANOVA"
-          href: Repeated_Response2.html
+        - text: "Mixed Effects with SPSS, SAS, and R"
+          base_url: https://mbrow20.shinyapps.io/NewMarkDownWithShiny/
+          #href: Repeated_Response2.html
         - text: "Three-Way ANOVA"
           href: ThreeWay.html
         - text: "Conjoint Analysis"
